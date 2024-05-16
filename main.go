@@ -18,9 +18,10 @@ type Faculty struct {
 }
 
 type Course struct {
-	CourseCode string  `json:"courseCode"`
-	CourseName string  `json:"courseName"`
-	TutorIDs   []int64 `json:"tutorIDs"`
+	CourseCode    string  `json:"courseCode"`
+	CourseName    string  `json:"courseName"`
+	Prerequisites string  `json:"prerequisites"`
+	TutorIDs      []int64 `json:"tutorIDs"`
 }
 
 type Tutor struct {
@@ -190,15 +191,24 @@ func main() {
 	})
 
 	courses = append(courses, Course{
-		CourseCode: "CSX001",
-		CourseName: "Fundamentals of Programming",
-		TutorIDs:   []int64{6411271},
+		CourseCode:    "CSX1001",
+		CourseName:    "Fundamentals of Programming",
+		Prerequisites: "None",
+		TutorIDs:      []int64{6411271},
 	})
 
 	courses = append(courses, Course{
-		CourseCode: "BBA001",
-		CourseName: "Business Exploration",
-		TutorIDs:   []int64{6411271, 6411325},
+		CourseCode:    "CSX3001",
+		CourseName:    "Object-Oriented Programming",
+		Prerequisites: "CSX1001",
+		TutorIDs:      []int64{6411271},
+	})
+
+	courses = append(courses, Course{
+		CourseCode:    "BBA1001",
+		CourseName:    "Business Exploration",
+		Prerequisites: "None",
+		TutorIDs:      []int64{6411271, 6411325},
 	})
 
 	faculties = append(faculties, Faculty{
